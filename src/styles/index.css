@@ -1,3 +1,33 @@
 /* 
     General Styles
 */
+.navbar{
+    padding: 10px 200px;
+}
+.footer{
+    text-align: center;
+    margin-top: 15px;
+    background-color: black;
+    color: white;
+    padding: 10px 0px;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+.student{
+    color: darkturquoise;
+}
+.card{
+    width: 18rem;
+}
+.card-title{
+    font-size: 2rem;
+}
+.card-body{
+    font-weight: bolder;
+    text-align: start;
+}
+.corazon{
+    margin-left: 100px;
+}
