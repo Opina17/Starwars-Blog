@@ -9,9 +9,9 @@ const Card = () => {
                 <div className="card-body">
                     <p className="card-title">Nombre</p>
                     <p className="card-text">
-                        Gender: {/* Genero de la persona */}  <br />
-                        Hair-color: {/* Color de cabello de la persona */} <br />
-                        Eye-color: {/* Color de ojos de la persona */} <br />
+                        Gender: n/a {/* Genero de la persona */}  <br />
+                        Hair-color: n/a {/* Color de cabello de la persona */} <br />
+                        Eye-color: n/a {/* Color de ojos de la persona */} <br />
                     </p>
                     <Link to="/details">
                         <button className="btn btn-primary">Learn More!

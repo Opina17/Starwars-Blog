@@ -1,33 +1,50 @@
-/* 
-    General Styles
-*/
 .navbar{
     padding: 10px 200px;
+    margin-bottom: 20px;
+    background-color: black;
 }
 .footer{
     text-align: center;
-    margin-top: 15px;
     background-color: black;
     color: white;
     padding: 10px 0px;
+    margin-top: 20px;
+}
+.footer a{
+    color: darkturquoise;
 }
 a{
     text-decoration: none;
     color: white;
 }
-.student{
-    color: darkturquoise;
+.card-scroll{
+    display: flex;
+    overflow-x: scroll;
+    margin-bottom: 20px;
 }
+
+
+/* Card del home, con personajes, vehiculos y planetas */
 .card{
-    width: 18rem;
+    width: 300px;
+    margin: 5px;
 }
 .card-title{
-    font-size: 2rem;
+    font-size: 25px;
+    font-weight: bolder;
 }
 .card-body{
-    font-weight: bolder;
     text-align: start;
 }
 .corazon{
     margin-left: 100px;
+}
+
+/* Card de details */
+.card-details{
+    height: 500px;
+    display: flex;
+}
+.card-details img{
+    width: 50%;
 }

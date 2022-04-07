@@ -4,9 +4,9 @@ import logo from "../../img/StarWars.png"
 
 export const Navbar = () => {
 	return (
-		<nav className="navbar navbar-dark bg-dark mb-3">
+		<nav className="navbar navbar-dark">
 			<Link to="/">
-				<div className="navbar-brand mb-0 h1">{logo}</div>
+				<div className="navbar-brand">{logo}</div>
 			</Link>
 			<div className="ml-auto">
 				<div className="dropdown">
