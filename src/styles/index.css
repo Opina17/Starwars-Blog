@@ -1,7 +1,10 @@
 .navbar{
-    padding: 10px 200px;
     margin-bottom: 20px;
     background-color: black;
+}
+.navbar img{
+    width: 150px;
+    height: 90px;
 }
 .footer{
     text-align: center;
@@ -47,4 +50,8 @@ a{
 }
 .card-details img{
     width: 50%;
+}
+.general-details{
+    margin: 20px 80px;
+    text-align: center;
 }
