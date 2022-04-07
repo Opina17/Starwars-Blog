@@ -6,7 +6,7 @@ export const Navbar = () => {
 	return (
 		<nav className="navbar navbar-dark">
 			<div className="container">
-			<Link to="/">
+			<Link to={`/`}>
 				<img src={logo} />
 			</Link>
 			<div className="ml-auto">
