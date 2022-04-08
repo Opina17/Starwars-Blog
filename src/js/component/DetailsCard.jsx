@@ -1,6 +1,12 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import {Context} from "../store/appContext.js"
+import {useParams} from "react-router-dom"
 
 const DetailsCard = () => {
+    const {store} = useContext(Context);
+    const params = useParams();
+    console.log(params.id)
+
     return (
         <div className="container">
             <div className="card-details row">

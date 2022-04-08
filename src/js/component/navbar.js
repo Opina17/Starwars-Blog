@@ -14,11 +14,10 @@ export const Navbar = () => {
 			<div className="ml-auto">
 				<div className="dropdown">
 					<button className="btn btn-primary dropdown-toggle favorites" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-						Favorites <span className="badge bg-secondary">0</span>
+						Favorites <span className="badge bg-secondary">{store.favorites.length}</span>
 					</button>
 					<ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-						<li className="mx-2">(empty)</li>
-						{/* lista de los favoritos */}
+						{store.favorites == "" && <li className="ms-2">(empty)</li>}
 					</ul>
 				</div>
 			</div>
