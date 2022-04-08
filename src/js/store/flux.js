@@ -2,52 +2,40 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			urlBase: "https://www.swapi.tech/api",
-			people: [],
-			planets: [],
-			vehicles: []
+			endPoints: ["people", "planets", "vehicles"],
+			people: JSON.parse(localStorage.getItem("people")) || [],
+			planets: JSON.parse(localStorage.getItem("planets")) || [],
+			vehicles: JSON.parse(localStorage.getItem("vehicles")) || []
 		},
 		actions: {
-			getPeople: async () => {
-				try {
-					const store = getStore()
-					let response = await fetch(`${store.urlBase}/people`)
-					let data = await response.json()
-					setStore({
-						...store,
-						people: data.results
-					})
-				} catch (error) {
-					console.log("Hubo un error:", error)
-				}
-			},
-			getPlanets: async () =>{
-				try{
-					const store = getStore()
-					let response = await fetch(`${store.urlBase}/planets`)
-					let data = await response.json()
-					setStore({
-						...store,
-						planets: data.results
-					})
-				}catch(error){
-					console.log("Hubo un error:", error)
-				}
-			},
-			getVehicles: async () =>{
-				try{
-					const store = getStore()
-					let response = await fetch(`${store.urlBase}/vehicles`)
-					let data = await response.json()
-					setStore({
-						...store,
-						vehicles: data.results
-					})
-				}catch(error){
-					console.log("Hubo un error", error)
+			fetchApi: async () => {
+				const store = getStore()
+				if (!store.people.length) {
+					for (let nature of store.endPoints) {
+						try {
+							let response = await fetch(`${store.urlBase}/${nature}`)
+							if (response.ok) {
+								let data = await response.json()
+								data.results.map(async (item) => {
+									let newResponse = await fetch(`${store.urlBase}/${nature}/${item.uid}`)
+									if (newResponse.ok) {
+										let newResult = await newResponse.json()
+										setStore({
+											...store,
+											[nature]: [...store[nature], newResult.result]
+										})
+										localStorage.setItem(nature, JSON.stringify(store[nature]))
+									}
+								})
+							}
+						} catch (error) {
+							console.log("Hubo un error:", error)
+						}
+					}
 				}
 			}
 		}
-	};
+	}
 };
 
 export default getState;
