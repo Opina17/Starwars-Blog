@@ -1,9 +1,6 @@
 import React from 'react';
-import {useParams} from "react-router-dom";
 
 const DetailsCard = () => {
-    let params = useParams();
-
     return (
         <div className="container">
             <div className="card-details row">

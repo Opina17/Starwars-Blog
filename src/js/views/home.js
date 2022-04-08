@@ -1,7 +1,10 @@
 import React, { useContext } from "react";
 import "../../styles/home.css";
-import Card from "../component/Card.jsx";
-import { Context } from "../store/appContext.js"
+import PeopleCard from "../component/Cards/PeopleCard.jsx";
+import PlanetsCard from "../component/Cards/PlanetsCard.jsx";
+import VehiclesCard from "../component/Cards/VehiclesCard.jsx";
+import { Context } from "../store/appContext.js";
+
 
 export const Home = () => {
 	const {store} = useContext(Context)
@@ -12,7 +15,7 @@ export const Home = () => {
 			<div className="card-scroll row flex-nowrap">
 				{store.people.map((person) =>{
 					return(
-					<Card key={person.uid} {...person} />
+					<PeopleCard key={person.uid} {...person} />
 					);
 				})}
 			</div>
@@ -21,7 +24,16 @@ export const Home = () => {
 			<div className="card-scroll row flex-nowrap">
 				{store.planets.map((planet) =>{
 					return(
-					<Card key={planet.uid} {...planet} />
+					<PlanetsCard key={planet.uid} {...planet} />
+					);
+				})}
+			</div>
+
+			<h1>Vehicles:</h1>
+			<div className="card-scroll row flex-nowrap">
+				{store.vehicles.map((vehicle) =>{
+					return(
+						<VehiclesCard key={vehicle.uid} {...vehicle} />
 					);
 				})}
 			</div>
