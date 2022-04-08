@@ -6,7 +6,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			people: JSON.parse(localStorage.getItem("people")) || [],
 			planets: JSON.parse(localStorage.getItem("planets")) || [],
 			vehicles: JSON.parse(localStorage.getItem("vehicles")) || [],
-			favorite: []
+			favorites: JSON.parse(localStorage.getItem("favorites")) || []
 		},
 		actions: {
 			fetchApi: async () => {
