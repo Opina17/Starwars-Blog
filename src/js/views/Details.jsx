@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import DetailsCard from '../component/DetailsCard.jsx';
 import { Context } from "../store/appContext.js"
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 const Details = () => {
     const { store } = useContext(Context);

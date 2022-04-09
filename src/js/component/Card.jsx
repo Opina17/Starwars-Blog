@@ -28,10 +28,8 @@ const Card = ({ nature, properties, uid, _id }) => {
                         <button
                             type='button'
                             className={`corazon negro ${color === "negro" && "like"}`}
-                            // className={`corazon ${store.color}`}
                             onClick={() => {
                                 setColor("negro")
-                                // actions.changeLike()
                                 actions.addFavorites(_id)
                             }}>
                             <i className="fas fa-heart"></i>

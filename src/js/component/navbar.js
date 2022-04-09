@@ -26,25 +26,25 @@ export const Navbar = () => {
 						</button>
 						<ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 
-							{/* Si no hay favorites muestra esto */}
-							{store.favorites == "" && <li className="ms-2">(empty)</li>}
-
-							{/* Mostrar los favoritos */}
-							{store.favorites.map((item) => {
-								console.log(item)
-								return (
-									<li key={item._id} className="ms-2 d-flex">
-										{item.properties.name}
-										<button
-											type="button"
-											className="delete"
-											onClick={() => actions.deleteFavorite(item._id)}>
-											<i className="fas fa-trash"></i>
-										</button>
-									</li>
-								);
-							})}
-
+							{ /* Si no hay favorites muestra esto */
+								store.favorites == "" ? (<li className="ms-2">(empty)</li>
+								) : (
+									/* Lista de favoritos */
+									store.favorites.map((item) => {
+										return (
+											<li key={item._id} className="ms-2 d-flex">
+												{item.properties.name}
+												<button
+													type="button"
+													className="delete"
+													onClick={() => actions.deleteFavorite(item._id)}>
+													<i className="fas fa-trash"></i>
+												</button>
+											</li>
+										);
+									})
+								)
+							}
 						</ul>
 					</div>
 				</div>
