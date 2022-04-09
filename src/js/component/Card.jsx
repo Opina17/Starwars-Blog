@@ -1,25 +1,40 @@
+import React, { useContext, useState } from 'react';
 import propTypes from 'prop-types';
-import React from 'react';
 import { Link } from "react-router-dom"
+import { Context } from "../store/appContext"
 
-const Card = ({ nature, properties, uid }) => {
+
+const Card = ({ nature, properties, uid, _id }) => {
+    const [color, setColor] = useState("");
+
+    const { actions } = useContext(Context);
+    const { name, gender, hair_color, eye_color, climate, gravity, population, model, passengers, cost_in_credits } = properties;
+
     return (
         <>
             {nature === "people" ? (
                 <div className="card">
                     <img src="http://via.placeholder.com/400x200" className="card-img" alt="imagen" />
                     <div className="card-body">
-                        <p className="card-title">{properties.name}</p>
+                        <p className="card-title">{name}</p>
                         <p className="card-text">
-                            Gender: {properties.gender}   <br />
-                            Hair-color: {properties.hair_color}  <br />
-                            Eye-color: {properties.eye_color}  <br />
+                            Gender: {gender}   <br />
+                            Hair-color: {hair_color}  <br />
+                            Eye-color: {eye_color}
                         </p>
-                        <Link to={`/details/${uid}`}>
+                        <Link to={`/${nature}/${uid}`}>
                             <button className="btn btn-primary">  Learn More!  </button>
                         </Link>
-                        <button className="corazon btn btn-warning">
-                            <i className="far fa-heart"></i>
+                        <button
+                            type='button'
+                            className={`corazon negro ${color === "negro" && "like"}`}
+                            // className={`corazon ${store.color}`}
+                            onClick={() => {
+                                setColor("negro")
+                                // actions.changeLike()
+                                actions.addFavorites(_id)
+                            }}>
+                            <i className="fas fa-heart"></i>
                         </button>
                     </div>
                 </div>
@@ -27,17 +42,22 @@ const Card = ({ nature, properties, uid }) => {
                 <div className="card">
                     <img src="http://via.placeholder.com/400x200" className="card-img" alt="imagen" />
                     <div className="card-body">
-                        <p className="card-title">{properties.name}</p>
+                        <p className="card-title">{name}</p>
                         <p className="card-text">
-                            Climate: {properties.climate}   <br />
-                            Gravity: {properties.gravity}  <br />
-                            Population:  {properties.population} <br />
+                            Climate: {climate}   <br />
+                            Gravity: {gravity}  <br />
+                            Population:  {population}
                         </p>
-                        <Link to={`/details/${uid}`}>
+                        <Link to={`/${nature}/${uid}`}>
                             <button className="btn btn-primary">  Learn More!  </button>
                         </Link>
-                        <button className="corazon btn btn-warning">
-                            <i className="far fa-heart"></i>
+                        <button
+                            className={`corazon negro ${color === "negro" && "like"}`}
+                            onClick={() => {
+                                setColor("negro")
+                                actions.addFavorites(_id)
+                            }}>
+                            <i className="fas fa-heart"></i>
                         </button>
                     </div>
                 </div>
@@ -45,18 +65,23 @@ const Card = ({ nature, properties, uid }) => {
                 <div className="card">
                     <img src="http://via.placeholder.com/400x200" className="card-img" alt="imagen" />
                     <div className="card-body">
-                        <p className="card-title">{properties.name}</p>
+                        <p className="card-title">{name}</p>
                         <p className="card-text">
-                            Model: {properties.model}   <br />
-                            Passengers: {properties.passengers} <br />
-                            Price: {properties.cost_in_credits}
+                            Model: {model}   <br />
+                            Passengers: {passengers} <br />
+                            Price: {cost_in_credits}
                         </p>
                         <div className="endButtons">
-                            <Link to={`/details/${uid}`}>
+                            <Link to={`/${nature}/${uid}`}>
                                 <button className="btn btn-primary">  Learn More!  </button>
                             </Link>
-                            <button className="corazon btn btn-warning">
-                                <i className="far fa-heart"></i>
+                            <button
+                                className={`corazon negro ${color === "negro" && "like"}`}
+                                onClick={() => {
+                                    setColor("negro")
+                                    actions.addFavorites(_id)
+                                }}>
+                                <i className="fas fa-heart"></i>
                             </button>
                         </div>
                     </div>
@@ -73,7 +98,9 @@ const Card = ({ nature, properties, uid }) => {
 
 Card.propTypes = {
     nature: propTypes.string,
-    properties: propTypes.object
+    properties: propTypes.object,
+    uid: propTypes.string,
+    _id: propTypes.string
 }
 
 export default Card;

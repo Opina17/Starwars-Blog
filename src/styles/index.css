@@ -25,6 +25,21 @@ a{
     overflow-x: scroll;
     margin-bottom: 20px;
 }
+.delete{
+    margin-left: auto;
+    margin-right: 5px;
+    border: none;
+    background-color: white;
+}
+.negro{
+    border: none;
+    background-color: white;
+}
+.like{
+    border: none;
+    color: red;
+    background-color: white;
+}
 
 
 /* Card del home, con personajes, vehiculos y planetas */
