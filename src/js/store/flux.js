@@ -3,8 +3,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			urlBase: "https://www.swapi.tech/api",
 			endPoints: ["people", "planets", "vehicles"],
-			color: ["negro"],
-			details: [],
 			people: JSON.parse(localStorage.getItem("people")) || [],
 			planets: JSON.parse(localStorage.getItem("planets")) || [],
 			vehicles: JSON.parse(localStorage.getItem("vehicles")) || [],
@@ -59,6 +57,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 							})
 							localStorage.setItem("favorites", JSON.stringify(store.favorites))
 						}
+						return;
 					}
 				}else{
 					let newFavorite = store.favorites.filter((item) =>{
@@ -86,22 +85,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 				localStorage.setItem("favorites", JSON.stringify(store.favorites))
 			},
-			// changeLike: () =>{
-			// 	let store = getStore();
-			// 	for(let i = 0; 100 > i; i++){
-			// 		if(i % 2 == 0){
-			// 			setStore({
-			// 				...store,
-			// 				color: "negro"
-			// 			})
-			// 		}else{
-			// 			setStore({
-			// 				...store,
-			// 				color: "rojo"
-			// 			})
-			// 		}
-			// 	}
-			// },
 		}
 	}
 };

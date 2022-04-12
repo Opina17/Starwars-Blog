@@ -1,12 +1,10 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import propTypes from 'prop-types';
 import { Link } from "react-router-dom"
 import { Context } from "../store/appContext"
 
 
 const Card = ({ nature, properties, uid, _id }) => {
-    const [color, setColor] = useState("");
-
     const { actions } = useContext(Context);
     const { name, gender, hair_color, eye_color, climate, gravity, population, model, passengers, cost_in_credits } = properties;
 
@@ -27,11 +25,8 @@ const Card = ({ nature, properties, uid, _id }) => {
                         </Link>
                         <button
                             type='button'
-                            className={`corazon negro ${color === "negro" && "like"}`}
-                            onClick={() => {
-                                setColor("negro")
-                                actions.addFavorites(_id)
-                            }}>
+                            className={`corazon negro`}
+                            onClick={() => actions.addFavorites(_id)}>
                             <i className="fas fa-heart"></i>
                         </button>
                     </div>
@@ -50,11 +45,8 @@ const Card = ({ nature, properties, uid, _id }) => {
                             <button className="btn btn-primary">  Learn More!  </button>
                         </Link>
                         <button
-                            className={`corazon negro ${color === "negro" && "like"}`}
-                            onClick={() => {
-                                setColor("negro")
-                                actions.addFavorites(_id)
-                            }}>
+                            className={`corazon negro`}
+                            onClick={() => actions.addFavorites(_id)}>
                             <i className="fas fa-heart"></i>
                         </button>
                     </div>
@@ -74,11 +66,8 @@ const Card = ({ nature, properties, uid, _id }) => {
                                 <button className="btn btn-primary">  Learn More!  </button>
                             </Link>
                             <button
-                                className={`corazon negro ${color === "negro" && "like"}`}
-                                onClick={() => {
-                                    setColor("negro")
-                                    actions.addFavorites(_id)
-                                }}>
+                                className={`corazon negro`}
+                                onClick={() => actions.addFavorites(_id)}>
                                 <i className="fas fa-heart"></i>
                             </button>
                         </div>

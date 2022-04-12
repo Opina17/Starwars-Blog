@@ -1,24 +1,35 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import DetailsCard from '../component/DetailsCard.jsx';
 import { Context } from "../store/appContext.js"
 import { useParams } from 'react-router-dom';
 
 const Details = () => {
     const { store } = useContext(Context);
+    
     const params = useParams();
+    const { nature, id } = params
+
+    const [detail, setDetail] = useState({});
+
+    const getDetails = () => {
+        let newDetail = store[nature].find((item) => {
+            return (
+                item.uid == id
+            )
+        })
+        if (newDetail) {
+            setDetail(newDetail)
+        }
+    }
+
+    useEffect(() => {
+        getDetails()
+    }, [])
 
     return (
         <>
-        <h1>Detalles de {params.nature} {params.id}</h1>
             <div className='container'>
-                {store.people.map((item) => {
-                    if ((item.uid == params.id) == true) {
-                        return (
-                            // console.log(params.nature)
-                            <DetailsCard key={params.id} {...item} nature="people" />
-                        );
-                    }
-                })}
+                <DetailsCard detail={detail} nature={nature} />
             </div>
         </>
 
