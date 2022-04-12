@@ -56,8 +56,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 								favorites: [...store.favorites, favorite]
 							})
 							localStorage.setItem("favorites", JSON.stringify(store.favorites))
+							return;
 						}
-						return;
 					}
 				}else{
 					let newFavorite = store.favorites.filter((item) =>{
